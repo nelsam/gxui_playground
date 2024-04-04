@@ -5,12 +5,14 @@
 package command
 
 import (
+	"github.com/nelsam/gxui"
 	"github.com/nelsam/gxui/themes/basic"
 	"github.com/nelsam/vidar/commander/bind"
 )
 
 type FileHook struct {
-	Theme *basic.Theme
+	Theme  *basic.Theme
+	Driver gxui.Driver
 }
 
 func (h FileHook) Name() string {
@@ -24,6 +26,7 @@ func (h FileHook) OpName() string {
 func (h FileHook) FileBindables(string) []bind.Bindable {
 	return []bind.Bindable{
 		NewSave(h.Theme),
+		NewSaveAs(h.Driver, h.Theme),
 		NewSaveAll(h.Theme),
 		NewCloseTab(),
 		&EditorRedraw{},

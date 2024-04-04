@@ -28,7 +28,7 @@ func Bindables(cmdr command.Commander, driver gxui.Driver, theme *basic.Theme) [
 		&caret.Mover{},
 		&scroll.Scroller{},
 		focus.NewLocation(driver),
-		FileHook{Theme: theme},
+		FileHook{Theme: theme, Driver: driver},
 		EditHook{Theme: theme, Driver: driver},
 		ViewHook{},
 		NavHook{Commander: cmdr},
